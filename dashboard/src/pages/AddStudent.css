@@ -1,0 +1,37 @@
+h1 {
+  color: #121212;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.add-main {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+button {
+  width: 70%;
+  margin: 10px auto;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50vw;
+}
+
+.information {
+  margin-top: 90px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.information p {
+  font-size: large;
+  font-weight: 400;
+  color: #121212;
+}
