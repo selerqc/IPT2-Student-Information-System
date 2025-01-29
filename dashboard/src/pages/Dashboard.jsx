@@ -16,8 +16,8 @@ function Dashboard() {
         className="btn"
         variant="contained"
         color="primary"
-        onClick={() => setColor("blue")}>
-        Blue
+        onClick={() => setColor(color === "red" ? "blue" : "red")}>
+        {color}
       </Button>
       <p>My name is:{firstName}</p>
       <TextField
