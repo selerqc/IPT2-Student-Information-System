@@ -19,6 +19,12 @@ function Sidebar() {
             ADD STUDENT
           </p>
         </Link>
+        <Link to="/TaskTracker">
+          <p>
+            <InfoIcon style={{ marginRight: "10px" }} />
+            TASK TRACKER
+          </p>
+        </Link>
       </div>
     </div>
   );
