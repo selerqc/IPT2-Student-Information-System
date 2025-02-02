@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import AddStudent from "./pages/AddStudent";
 import TaskTracker from "./pages/TaskTracker";
+
 function App() {
   return (
     <BrowserRouter>

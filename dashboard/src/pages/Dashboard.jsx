@@ -33,8 +33,7 @@ function Dashboard() {
           variant="contained"
           color="primary"
           onClick={() => {
-            const fn = document.getElementById("fn");
-            setFirstName(fn.value);
+            setFirstName(document.getElementById("fn").value);
           }}>
           Submit
         </Button>
