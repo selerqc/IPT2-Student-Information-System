@@ -16,7 +16,7 @@ function Dashboard() {
         <Button
           className="btn"
           variant="contained"
-          color="primary"
+          color={color === "red" ? "error" : "primary"}
           onClick={() => setColor(color === "red" ? "blue" : "red")}>
           {color}
         </Button>
@@ -26,8 +26,7 @@ function Dashboard() {
           margin="normal"
           id="fn"
           variant="outlined"></TextField>
-        <br />
-        <br />
+
         <Button
           className="btn"
           variant="contained"

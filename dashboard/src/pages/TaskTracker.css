@@ -26,16 +26,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.btn {
-  display: flex;
-  gap: 10px;
-  width: 300px;
-}
 
-.input-container button:last-child {
-  background-color: red;
-}
 .input-container button {
+  width: 150px;
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #28a745;
@@ -62,14 +55,12 @@ li {
 }
 
 span {
-  padding: 10px 10px;
-
-  max-width: 300px;
-  overflow-x: hidden;
+  max-width: 200px;
+  overflow-wrap: break-word;
 }
 li.completed span {
   text-decoration: line-through;
-  color: red;
+  color: gray;
 }
 .buttons {
   display: flex;

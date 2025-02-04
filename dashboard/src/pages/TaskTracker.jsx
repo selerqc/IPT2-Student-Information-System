@@ -4,11 +4,16 @@ import Sidebar from "./Sidebar";
 function TaskTracker() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
-
+  const [error, setError] = useState("");
   const addTask = () => {
     if (task.trim()) {
       setTasks([...tasks, { text: task, completed: false }]);
       setTask("");
+    } else {
+      setError("Please enter a task");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
     }
   };
   const removeAll = () => {
@@ -36,11 +41,10 @@ function TaskTracker() {
           onChange={(e) => setTask(e.target.value)}
           placeholder="Enter a task"
         />
-        <div className="btn">
-          <button onClick={addTask}>Add Task</button>
-          <button onClick={removeAll}>Remove All</button>
-        </div>
+
+        <button onClick={addTask}>Add Task</button>
       </div>
+      <p>{error}</p>
       <ul>
         {tasks.map((t, index) => (
           <li key={index} className={t.completed ? "completed" : ""}>

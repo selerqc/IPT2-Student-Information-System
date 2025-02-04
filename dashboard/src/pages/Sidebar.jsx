@@ -1,5 +1,6 @@
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
+import AddTaskIcon from "@mui/icons-material/AddTask";
 import "./Sidebar.css";
 import { Outlet, Link } from "react-router-dom";
 
@@ -21,7 +22,7 @@ function Sidebar() {
         </Link>
         <Link to="/TaskTracker">
           <p>
-            <InfoIcon style={{ marginRight: "10px" }} />
+            <AddTaskIcon style={{ marginRight: "10px" }} />
             TASK TRACKER
           </p>
         </Link>
