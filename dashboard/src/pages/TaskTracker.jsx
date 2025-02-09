@@ -1,24 +1,46 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./TaskTracker.css";
 import Sidebar from "./Sidebar";
+import { ToastContainer, toast } from "react-toastify";
 function TaskTracker() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
   const [error, setError] = useState("");
+
   const addTask = () => {
     if (task.trim()) {
       setTasks([...tasks, { text: task, completed: false }]);
       setTask("");
+      toast.success("Task Added!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // transition: Bounce,
+      });
     } else {
-      setError("Please enter a task");
-      setTimeout(() => {
-        setError("");
-      }, 3000);
+      const errorMessage = "Please enter a task";
+      setError(errorMessage);
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // transition: Bounce,
+      });
     }
   };
-  const removeAll = () => {
-    setTasks([]);
-  };
+  // const removeAll = () => {
+  //   setTasks([]);
+  // };
 
   const toggleComplete = (index) => {
     const updatedTasks = tasks.map((t, i) =>
@@ -29,6 +51,17 @@ function TaskTracker() {
 
   const removeTask = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
+    toast.info("Task removed", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
   };
 
   return (
@@ -44,7 +77,7 @@ function TaskTracker() {
 
         <button onClick={addTask}>Add Task</button>
       </div>
-      <p>{error}</p>
+      {error && <ToastContainer />}
       <ul>
         {tasks.map((t, index) => (
           <li key={index} className={t.completed ? "completed" : ""}>
