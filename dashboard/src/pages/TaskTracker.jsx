@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./TaskTracker.css";
 import Sidebar from "./Sidebar";
 import { ToastContainer, toast } from "react-toastify";
+
 function TaskTracker() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");

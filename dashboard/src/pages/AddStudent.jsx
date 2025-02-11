@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import "./AddStudent.css";
 import Sidebar from "./Sidebar";
 
+import axios from "axios";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,106 +15,35 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 function AddStudent() {
   const [students, setStudents] = useState([]);
+
   const submit = () => {
-    const id = document.getElementById("idNumber").value;
-    const fn = document.getElementById("fn").value;
-    const ln = document.getElementById("ln").value;
-    const mn = document.getElementById("mn").value;
-    const course = document.getElementById("course").value;
-    const year = document.getElementById("year").value;
+    const newStudent = {
+      idNumber: document.getElementById("idNumber").value,
+      firstName: document.getElementById("fn").value,
+      lastName: document.getElementById("ln").value,
+      middleName: document.getElementById("mn").value,
+      course: document.getElementById("course").value,
+      year: document.getElementById("year").value,
+    };
 
-    if (
-      id === "" ||
-      fn === "" ||
-      ln === "" ||
-      mn === "" ||
-      course === "" ||
-      year === ""
-    ) {
-      alert("Please fill out the form");
-      return;
-    }
-    handleInput();
+    setStudents([...students, newStudent]);
   };
 
-  const handleInput = () => {
-    const id = document.getElementById("idNumber").value;
-    const fn = document.getElementById("fn").value;
-    const ln = document.getElementById("ln").value;
-    const mn = document.getElementById("mn").value;
-    const course = document.getElementById("course").value;
-    const year = document.getElementById("year").value;
-
-    setStudents([
-      ...students,
-      {
-        idNumber: id,
-        Firstname: fn,
-        Lastname: ln,
-        Middlename: mn,
-        course: course,
-        year: year,
-      },
-    ]);
-    document.getElementById("idNumber").value = "";
-    document.getElementById("fn").value = "";
-    document.getElementById("ln").value = "";
-    document.getElementById("mn").value = "";
-    document.getElementById("course").value = "";
-    document.getElementById("year").value = "";
-  };
   return (
     <>
       <div className="container">
         <div className="add-main">
           <h1>ADD STUDENT</h1>
-          <TextField
-            label="Id Number:"
-            margin="normal"
-            id="idNumber"></TextField>
-          <TextField label=" Firstname:" margin="normal" id="fn"></TextField>
-          <TextField label=" Lastname:" margin="normal" id="ln"></TextField>
-          <TextField label=" Middlename:" margin="normal" id="mn"></TextField>
-          <TextField label=" Course:" margin="normal" id="course"></TextField>
-          <TextField label=" Year:" margin="normal" id="year"></TextField>
+          <TextField label="Id Number:" margin="normal" id="idNumber" />
+          <TextField label=" Firstname:" margin="normal" id="fn" />
+          <TextField label=" Lastname:" margin="normal" id="ln" />
+          <TextField label=" Middlename:" margin="normal" id="mn" />
+          <TextField label=" Course:" margin="normal" id="course" />
+          <TextField label=" Year:" margin="normal" id="year" />
           <Button variant="contained" onClick={submit}>
             Add Student
           </Button>
         </div>
-        {/* <div className="information">
-          <h1>Student Information</h1>
-          <p>Id Number: {data.idNumber}</p>
-          <p>Firstname: {data.Firstname}</p>
-          <p>Lastname: {data.Lastname}</p>
-          <p>Middlename: {data.Middlename}</p>
-          <p>Course: {data.course}</p>
-          <p>Year: {data.year}</p>
-        </div> */}
-        {/* <div className="information">
-          <ul
-            style={{
-              padding: "10px",
-            }}>
-            {students.map((students, index) => (
-              <li
-                key={index}
-                style={{
-                  listStyleType: "none",
-                  padding: "20px",
-                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                  borderRadius: "10px",
-                  marginBottom: "10px",
-                }}>
-                <p> Id Number: {students.idNumber}</p>
-                <p>First Name: {students.Firstname}</p>
-                <p>Middle Name: {students.Middlename}</p>
-                <p>Last Name: {students.Lastname}</p>
-                <p> Course : {students.course}</p>
-                <p> Year: {students.year}</p>
-              </li>
-            ))}
-          </ul>
-        </div> */}
         <div className="information">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -127,19 +58,19 @@ function AddStudent() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {students.map((students) => (
+                {students.map((student) => (
                   <TableRow
-                    key={students.idNumber}
+                    key={student.idNumber}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                     <TableCell component="th" scope="row">
-                      {students.idNumber}
+                      {student.idNumber}
                     </TableCell>
 
-                    <TableCell align="right">{students.Firstname}</TableCell>
-                    <TableCell align="right">{students.Middlename}</TableCell>
-                    <TableCell align="right">{students.Lastname}</TableCell>
-                    <TableCell align="right">{students.course}</TableCell>
-                    <TableCell align="right">{students.year}</TableCell>
+                    <TableCell align="right">{student.firstName}</TableCell>
+                    <TableCell align="right">{student.middleName}</TableCell>
+                    <TableCell align="right">{student.lastName}</TableCell>
+                    <TableCell align="right">{student.course}</TableCell>
+                    <TableCell align="right">{student.year}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

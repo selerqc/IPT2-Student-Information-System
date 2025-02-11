@@ -32,7 +32,11 @@ function Dashboard() {
           variant="contained"
           color="primary"
           onClick={() => {
-            setFirstName(document.getElementById("fn").value);
+            const name = document.getElementById("fn");
+            if (name.value === "") {
+              alert("empty name");
+            }
+            setFirstName(name.value);
           }}>
           Submit
         </Button>
