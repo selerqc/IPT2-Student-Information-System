@@ -33,6 +33,7 @@ function Dashboard() {
           color="primary"
           onClick={() => {
             const name = document.getElementById("fn");
+
             if (name.value === "") {
               alert("empty name");
             }
